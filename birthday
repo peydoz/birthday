@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HAPPY BIRTHDAY MY LOVE</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .gallery img {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .wish-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            text-align: center;
+            max-width: 80%;
+            margin: 10px;
+            overflow-y: auto;
+            max-height: 300px;
+            border: 2px solid #2e8b57;
+        }
+
+        .wish-box.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            color: #2e8b57;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #333;
+            font-size: 16px;
+            margin: 0;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            width: 20px;
+            height: 20px;
+            background-color: #2e8b57;
+            position: absolute;
+            transform: rotate(-45deg);
+            animation: fall 2.5s linear infinite;
+            opacity: 0.7;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: #2e8b57;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: 10px;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 0;
+            }
+            100% {
+                top: 100%;
+                opacity: 1;
+            }
+        }
+
+        button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #206644;
+        }
+    </style>
+</head>
+<body>
+
+<div class="gallery">
+    <img src="https://i.postimg.cc/vx4KH8dB/3fe7e5ed-40d4-4e5b-95c1-1286bc54fd4e.jpg" alt="Image 1" />
+    <img src="https://i.postimg.cc/LnZWcsTQ/743439e9-ab5e-4247-a435-47248a48daf7.jpg" alt="Image 2" />
+    <img src="https://i.postimg.cc/14dT7FpN/9600656e-30be-4ff3-82df-030a764f057b.jpg" alt="Image 3" />
+    <img src="https://i.postimg.cc/bdrWRg2h/99b26292-e9ad-49a1-8c6b-cc51f9279c90.jpg" alt="Image 4" />
+</div>
+
+<div class="wish-box" id="wishBox">
+    <h1>🎉 Selamat Hari Jadi Sayang Yang Ke-21 🎉</h1>
+    <p>
+        Thank you for everything kerana sentiasa ada dengan saya, selalu berikan saya semangat,  
+        selalu kuatkan saya jika saya tengah down, pastu selalu nasihat saya,  
+        selalu ingatkan saya dah makan ke solat, suka tanya keadaan saya.  
+        Saya bersyukur sangat dapat bertemu dengan kamu sebab kamu memang  
+        perempuan yang saya cakap memang baik hati, pandai masak, suka tolong adik-adik,  
+        pandai ambil hati budak-budak.  
+        Saya harap lepas ni kamu dapat buktikan dengan parents kamu yang  
+        kamu boleh untuk dapatkan keputusan yang lebih bagus.  
+        Jangan risau, Allah tu sentiasa ada dengan kamu okey. ❤️  
+        <br><br>
+        Daripada Muhammad, Lope you yang! ❤️🥰  
+    </p>
+</div>
+
+<button onclick="showWish()">Open Wish</button>
+
+<div class="hearts" id="hearts"></div>
+
+<script>
+    function showWish() {
+        document.getElementById('wishBox').classList.add('show');
+        createHearts();
+    }
+
+    function createHearts() {
+        const heartsContainer = document.getElementById('hearts');
+
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${Math.random() * 2 + 2}s`;
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 2500);
+        }, 200);
+    }
+</script>
+
+</body>
+</html>
